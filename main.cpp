@@ -12,14 +12,21 @@ int main()
   int *array = 0;
   int m;
 
-	
+  
   cout << "Enter number of elements ( N ): " << endl;
   cin >> N;
   
-  >> M >> K >> L;
+  cout << "Enter number of steps ( M ) but only N => M: " << endl;
+  cin >> M;
 
+  cout << "Enter number of first step ( K ): " << endl;
+  cin >> K;
+  
+  cout << "Enter number of replay steps ( L ): " << endl;
+  cin >> L;
+  
   array = ( int * )malloc( N * sizeof( int ) );
-  array = 0;
+  
   if( array != NULL )
   {
 	m = K;
