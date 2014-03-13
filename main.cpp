@@ -1,94 +1,51 @@
-#include<iostream>
-#include<stdlib.h>
- using namespace std;
-
- void preview (int* array, int N);
- void shift(int* array, int N, int M);
+#include"main.h"
  
 
 int main()
 { 	
-  int N(0), M(0), L(0), K(0);
-  int *array = 0;
-  int m;
+	int N(0), M(0), L(0), K(0);
+	int *array = 0;
+	int m;
 
   
-  cout << "Enter number of elements ( N ): " << endl;
-  cin >> N;
-  
-  cout << "Enter number of steps ( M ) but only N => M: " << endl;
-  cin >> M;
+	cout << "Enter number of elements ( N ): " << endl;
+	cin >> N;
 
-  cout << "Enter number of first step ( K ): " << endl;
-  cin >> K;
+	cout << "Enter number of steps ( M ) but only N => M: " << endl;
+	cin >> M;
+
+	cout << "Enter number of first step ( K ): " << endl;
+	cin >> K;
   
-  cout << "Enter number of replay steps ( L ): " << endl;
-  cin >> L;
+	cout << "Enter number of replay steps ( L ): " << endl;
+	cin >> L;
   
-  array = ( int * )malloc( N * sizeof( int ) );
-  
-  if( array != NULL )
-  {
+	array = ( int * )malloc( N * sizeof( int ) );
 	m = K;
-
-	for(int i = 0; i != N; ++i)
+	if( array == NULL )
 	{
-	
-		array[i] = i+1;
-	
+		cout << "Warning!!! The memory was not allocated. Restart application." << endl;  
 	}
-
-
-	preview(array, N);
-
 	
+	else
+	{
+		for( int i = 0; i != N; ++i )
+		{
 
+			array[ i ] = i+1;
+	
+		}
+
+		Preview( array, N );
  	
-	for(int i = 0 ; i != L; ++i)
- 	{
-	
-		m=(m + M) % N;
-		shift(array, N, m);
-		preview(array, N);
-	
+		for(int i = 0 ; i != L; ++i)
+ 		{
+			m=(m + M) % N;
+			Shift(array, N, m);
+			Preview(array, N);
+		}
+  		cout << "Human which was in the end of list: "<< array[N-1] <<endl;
+		free(array);
 	}
- 
- 	cout << "Human which was in the end of list: "<< array[N-1] <<endl;
-	free(array);
-
-  }
- else if( array == NULL )
- {
- 
- 	cout << "Warning!!! The memory was not allocated. Restart application." << endl;  
- }
-
-  	 	return 0;
-}
-
-void preview(int *array, int n)
-{
-	for(int i = 0; i != n; ++i)
-	{
-		cout << array[i] <<" "<< flush;
-	}		
-	cout << endl;
-}
-
-
-void shift(int *array, int N, int M )
-{
-
-	int temp = array [ M ];
-
-
-	for( int m = M; m != ( N-1 ); ++m)
-	{	
-		
-		array[ m ] = array[ m + 1];
-	}
-	
-	array [N -1] = temp;
-
-	
+	return 0;
 }
