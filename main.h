@@ -8,9 +8,10 @@
 	using std::flush;
 	using std::endl;
 	
-	void Program ();
+	
 	void Preview (int* array, int N);
 	void Shift(int* array, int N, int M);
+	void Program();
 	#include"Preview.cpp"
 	#include"Shift.cpp"
 	#include"Program.cpp"
